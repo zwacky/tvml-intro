@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>TVML in tvOS</title>
+
+		<meta name="description" content="TVML in tvOS">
+		<meta name="author" content="Simon Wicki">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>TVML in tvOS</h1>
+					<h3>Does it work the 'Hybrid Way'?</h3>
+					<p>
+						<small>Simon Wicki (Twitter <a href="http://twitter.com/zwacky">@zwacky</a>)</small>
+					</p>
+				</section>
+
+				<section>
+					<h2>Outline</h2>
+					<ul>
+						<li>Quick Intro to tvOS</li>
+						<li>TVML</li>
+						<li>Demo & Code</li>
+						<li>Conclusion</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>#ME</h2>
+					<p>Front-end guy at <a href="https://www.justwatch.com">JustWatch.com</a></p>
+					<p>Twitter: @zwacky</p>
+					<ul>
+						<li>currently manage</li>
+						<ul>
+							<li>Angular Web App</li>
+							<li>Ionic Hybrid App (Android, iOS)</li>
+						</ul>
+					</ul>
+				</section>
+
+				<section>
+					<p>Quick Intro to tvOS</p>
+					<p></p>
+					<h2>Controls</h2>
+					<p class="fragment">
+						<img src="img/apple-tv-4th-gen.jpg">
+					</p>
+				</section>
+
+				<section>
+					<p>Quick Intro to tvOS</p>
+					<p></p>
+					<h2>Parallax Icons</h2>
+					<p class="fragment">
+						<img src="img/parallax_starcraft.gif">
+					</p>
+				</section>
+
+				<section>
+					<section>
+						<h2>Ways of Developing for tvOS</h2>
+						<p>and how they look like</p>
+					</section>
+
+
+					<section data-background="img/guitar_hero_large.jpg">
+						<h3 style="display: inline-block; background-color: rgba(0, 0, 0, 0.3); padding: 10px;">Native</h1>
+					</section>
+
+					<section data-background="img/galaxy_on_fire_large.jpg">
+						<h3 style="display: inline-block; background-color: rgba(0, 0, 0, 0.3); padding: 10px;">Native</h1>
+					</section>
+
+					<section data-background="img/gilt.jpg">
+						<h3 style="display: inline-block; background-color: rgba(0, 0, 0, 0.3); padding: 10px;">TVML</h1>
+					</section>
+
+					<section data-background="img/airbnb_large.jpg">
+						<h3 style="display: inline-block; background-color: rgba(0, 0, 0, 0.3); padding: 10px;">TVML</h1>
+					</section>
+
+				</section>
+
+
+
+
+
+
+				<section>
+					<section>
+						<h2>TVML</h2>
+						<p>XML Style</p>
+					</section>
+					<section>
+						<pre><code data-trim>
+<document>
+   <alertTemplate>
+      <title>Update Available</title>
+      <description>Get the latest tvOS version</description>
+      <button>
+         <text>Update Now</text>
+      </button>
+      <button>
+         <text>Cancel</text>
+      </button>
+   </alertTemplate>
+</document>
+						</code></pre>
+						<p>
+							turns into...
+						</p>
+					</section>
+
+					<section data-background="img/update_available.png">
+
+					</section>
+
+					<section>
+						<p>more complex templates are possible too...</p>
+					</section>
+
+					<section data-background="img/search_template.png">
+
+					</section>
+
+				</section>
+
+				<section>
+					<h2>TVML JS</h2>
+					<ul>
+						<li>DOMParser</li>
+						<li>Element</li>
+						<li>XMLSerializer</li>
+						<li>...</li>
+					</ul>
+				</section>
+
+				<section>
+					<section>
+						<h2>TVML Styles</h2>
+						<ul>
+							<li>27 documented styles</li>
+							<li>like <i>font-weight</i>, <i>margin</i>, <i>max-height</i></li>
+							<li>lots of <i>tv-*</i> styles like <i>tv-position</i>, <i>tv-rating-style</i></li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<h2>Limitations</h2>
+					<ul>
+						<li><strong>NO WEBVIEW!</strong></li>
+						<li>App size limit (200MB)</li>
+						<li>no persistent storage</li>
+						<ul>
+							<li>use iCloud storage</li>
+							<li>anything stored locally can be purged anytime</li>
+						</ul>
+						<li>Controls / Remote</li>
+					</ul>
+				</section>
+
+				<!-- <section>
+					<p>so why is there no...</p>
+					<h2><code>ionic platform add tvos</code></h2>
+				</section> -->
+
+				<section>
+					<h2>(little) Demo</h2>
+				</section>
+
+				<section>
+					<section>
+						<p>Architecture</p>
+						<h2>Server / Client Approach</h2>
+					</section>
+					<section data-background="img/structure.png">
+
+					</section>
+				</section>
+
+				<section>
+
+					<section>
+						<h2>Code</h2>
+					</section>
+
+					<section>
+						<p>vanilla API requests</p>
+						<pre><code>
+function requestApi(url, method, body, cb) {
+    var xhr = new XMLHttpRequest();
+    xhr.responseType = 'json';
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            cb(xhr.response);
+        }
+    };
+    xhr.open(method, url);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.setRequestHeader("Accept", 'application/json, */*');
+    xhr.send(body);
+}
+						</code></pre>
+					</section>
+
+					<section>
+						<p>forEaching template</p>
+						<pre><code>
+<shelf>
+  <sectionn>
+    ${this.cache.popular.items.map(function(title) {
+      return `<lockup>
+        <img src="${title.full_poster}" width="308" height="462" />
+        <title class="showTextOnHighlight">${title.title.replace('&', 'and')}</title>
+      </lockup>`;
+    })}
+  </sectionn>
+</shelf>
+						</code></pre>
+					</section>
+				</section>
+
+				<section>
+					<h2>Does it work the 'Hybrid Way'?</h2>
+					<div class="fragment">
+						<p>No.</p>
+					</div>
+					<!-- <ul>
+						<li>native and JS development with TVML is practically identical</li>
+						<li>even though TMVL looks limiting, great apps can be made</li>
+					</ul> -->
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
